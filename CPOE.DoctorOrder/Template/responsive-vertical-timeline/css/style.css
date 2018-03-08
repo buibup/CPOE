@@ -1,0 +1,338 @@
+﻿body {
+    /*background: #25303B;*/
+    background-color: #eeeeee;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    padding-top: 0px;
+}
+
+/*===== Cover, Logo =====*/
+header {
+    min-width: 1000px;
+    clear: left;
+    text-align: center;
+    overflow: hidden;
+}
+
+.logoH {
+    float: left;
+    width: 280px;
+}
+
+.logo {
+    width: 100%;
+    min-width: 700px;
+    padding-top: 20px;
+}
+
+.navbar-inverse {
+    background-color: #008051;
+    border-color: #008051;
+}
+
+/*===== Resonsive Vertical Timeline =====*/
+@media only screen and (max-width: 1000px) {
+    body {
+        width: 1000px;
+        overflow: scroll;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    /*div.fixedContinue {
+        visibility: hidden;
+    }
+
+    div.fixedOneDay {
+        visibility: hidden;
+    }*/
+}
+
+/*===== // Resonsive Vertical Timeline =====*/
+
+/*===== Vertical Timeline =====*/
+#conference-timeline {
+    position: relative;
+    max-width: 90%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+    /* ปุ่ม start, end */
+    #conference-timeline .timeline-start,
+    #conference-timeline .timeline-end {
+        display: table;
+        font-family: Helvetica, sans-serif;
+        font-size: 16px;
+        font-weight: 900;
+        text-transform: uppercase;
+        background-color: #1ba1f2;
+        padding: 15px 23px;
+        color: rgba(255,255,255,1);
+        max-width: 5%;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        border-radius: 6px;
+        /*border: 2px solid #2e82a0;*/
+    }
+
+    /* เส้น TimeLine */
+    #conference-timeline .conference-center-line {
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        margin-left: -2px;
+        background: #C5CAE9;
+        z-index: -1;
+    }
+
+    /* Div ที่ใช้แสดง TimeLine ทั้งหมด (อยู่หลัง Start และก่อนถึง End) */
+    #conference-timeline .conference-timeline-content {
+        padding-top: 67px;
+        padding-bottom: 67px;
+    }
+
+/* Row ของ timeline */
+.timeline-article {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0px;
+}
+
+    /* container ที่ใส่ blog ข้อมูลทางซ้าย */
+    .timeline-article .content-left-container {
+        float: left;
+        clear: left;
+    }
+
+    /* container ที่ใส่ blog ข้อมูลทางขวา */
+    .timeline-article .content-right-container {
+        float: right;
+        clear: right;
+    }
+
+    /* blog ข้อมูลทางซ้ายและขวา */
+    .timeline-article .content-left-container,
+    .timeline-article .content-right-container {
+        max-width: 44%;
+        width: 100%;
+        color: #fff;
+        margin-top:15px;
+        margin-bottom: 5px;
+    }
+
+    /* blog ข้อมูลทางซ้าย */
+    .timeline-article .content-left {
+        position: relative;
+        background-color: #fff;
+        color: #000000;
+        border-radius: 6px;
+    }
+
+        /* blog ข้อมูลทางซ้าย - Header */
+        .timeline-article .content-left tbody > tr > th {
+            padding: 3px;
+            border-radius: 6px 6px 0px 0px;
+            border-top: 0px solid;
+            color: #fff;
+            background-color: inherit;
+        }
+
+    /* blog ข้อมูลทางขวา */
+    .timeline-article .content-right {
+        position: relative;
+        background-color: #fff;
+        color: #000000;
+        border-radius: 6px;
+    }
+
+        /* blog ข้อมูลทางขวา - Header */
+        .timeline-article .content-right tbody > tr > th {
+            padding: 3px;
+            border-radius: 6px 6px 0px 0px;
+            border-top: 0px solid;
+            color: #fff;
+            background-color: inherit;
+        }
+
+    /* ลูกศรชี้ทางซ้าย */
+    .timeline-article .content-left:before {
+        position: absolute;
+        top: 5px;
+        font-size: 23px;
+        font-family: "FontAwesome";
+        /*color: #83c8f3;*/
+        content: "\f0da";
+        right: -8px;
+    }
+
+    /* ลูกศรชี้ทางขวา */
+    .timeline-article .content-right:before {
+        position: absolute;
+        top: 5px;
+        font-size: 23px;
+        font-family: "FontAwesome";
+        /*color: #42cac4;*/
+        content: "\f0d9";
+        left: -8px;
+    }
+
+    /* div ที่บรรจุ div ที่แสดงเวลา */
+    .timeline-article .meta-date {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 62px;
+        height: 62px;
+        margin-top: 7px;
+        margin-left: -31px;
+        color: #607d8b;
+        border-radius: 100%;
+        background-color: #fff;
+        border: 2px solid #428bca;
+        box-shadow: 0 0 0 7px #eeeeee;
+    }
+        /* div ที่แสดงเวลา */
+        .timeline-article .meta-date .date {
+            display: block;
+            text-align: center;
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 40px;
+            margin-top: 10px;
+        }
+/*===== // Vertical Timeline =====*/
+
+
+/* ตัวหนังสือ OneDay และ Continue ที่ fix ไว้ฝั่งซ้ายและขวา */
+div.fixedContinue {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: large;
+    color: #fff;
+    position: fixed;
+    top: 45%;
+    right: -50%;
+    width: 100%;
+    height:50px;
+    text-align: center;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    background-color:#e8dc00;
+}
+
+div.fixedOneDay {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: large;
+    color: #fff;
+    position: fixed;
+    top: 45%;
+    left: -50%;
+    width: 100%;
+    height:50px;
+    text-align: center;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    background-color:#8BC34A;
+}
+
+/*  Informat Header */
+.panel-heading .accordion-toggle span {
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.panel-heading .accordion-toggle:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: right;
+    color: #fff;
+}
+
+.panel-heading .accordion-toggle.collapsed:after {
+    content: "\e080";
+}
+
+/* Informat Detail */
+.panel-primary {
+    width: 70%;
+    margin-left: 15%;
+    border-color: #3897f0;
+}
+
+    .panel-primary > .panel-heading {
+        color: #ffffff;
+        background-color: #3897f0;
+    }
+
+    .panel-primary > .panel-body {
+        color: #25303B;
+        background-color: #fff;
+        border-radius: 0px 0px 5px 5px;
+    }
+
+
+
+/*  ตัวหนังสือขีดเส้นทับ */
+del {
+    color: red;
+}
+
+    del > span {
+        color: black;
+    }
+
+
+.form-horizontal .control-label-left {
+    text-align: left;
+}
+
+.form-horizontal .control-label-right {
+    text-align: right;
+}
+
+.form-horizontal .control-label-center {
+    text-align: center;
+}
+
+
+/* detail ใน OrderItem ด้านล่างของ Blog */
+.TRTableOrderList{
+    border-top: 0px solid #fff;
+    font-size: smaller;
+    padding-top: 0px;
+    padding-left: 25px;
+}
+
+    .TDTableOrderList table {
+        width:100%;
+        background-color: #eeeeee;
+        font-size: smaller;
+        padding: 8px;
+        border-radius: 5px;
+    }
+
+ /*
+     fix Date ให้แสดงตลอดช่วงวันนั้น
+ */
+.sticky {
+      position: -webkit-sticky;
+      position: -moz-sticky;
+      position: -o-sticky;
+      position: -ms-sticky;
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      z-index: 1;
+      background: #999;
+      color: #fff;
+      padding: 10px 20px;
+    }

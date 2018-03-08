@@ -1,0 +1,833 @@
+﻿@model DoctorOrder.Web.Models.PatientDrugGroupViewModel
+@using DoctorOrder.Web.Models
+
+
+@{
+    ViewBag.Title = "Doctor Order";
+}
+
+@{
+    var patient = Model.Patient;
+    var items = Model.DrugDateList;
+}
+
+@{
+    string time = string.Empty;
+}
+
+
+<link href="~/Template/responsive-vertical-timeline/css/normalize.min.css" rel="stylesheet" />
+<link href="~/Template/responsive-vertical-timeline/css/style.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container text-center">
+    <style>
+        .colorVerify:before {
+            color: #80ced6;
+        }
+
+        .colorCancel:before {
+            color: #f4a688;
+        }
+
+        .colorDiscontinue:before {
+            color: #ffcc5c;
+        }
+
+        .colorExecute:before {
+            color: #71c269;
+        }
+    </style>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            @*<h2 class="panel-title">
+                    <label class="col-md-11 control-label text-center">HN : @patient.HN</label>
+                    <span class="col-md-11 pull-right glyphicon glyphicon-chevron-down" aria-hidden="true" data-toggle="collapse" href="#collapseInfo" aria-expanded="false"></span>
+                </h2>*@
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseInfo">
+                <span>HN : @patient.HN</span>
+            </a>
+        </div>
+
+        <div class="panel-body in" id="collapseInfo">
+            <form class="form-horizontal row-border" action="#">
+                <div class="form-group">
+
+                    <label class="col-md-2 control-label-right">Name</label>
+                    <div class="col-md-3 control-label-left">
+                        @patient.Name
+                    </div>
+                    <label class="col-md-2 control-label-right">Gender</label>
+                    <div class="col-md-2 control-label-left">
+                        @patient.Gender
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label-right">Episode No</label>
+                    <div class="col-md-3 control-label-left">
+                        @patient.EpisodeNo
+                    </div>
+                    <label class="col-md-2 control-label-right">Date of Birth</label>
+                    <div class="col-md-5 control-label-left">
+                        @patient.DOB (@patient.Age years)
+                    </div>
+                </div>
+
+                <div class="form-group" style='padding:5px;@((patient.Allergys.Length > 0) ? "background-color:#FF7373;color:#fff;" : "color:#25303b;")'>
+                    <label class="col-md-2 control-label-right">Allergy</label>
+                    <div class="col-md-10 control-label-left">
+                        @if (patient.Allergys.Length > 0)
+                        {
+                            foreach (var allergy in patient.Allergys)
+                            {
+                                if (!patient.Allergys.LastOrDefault().Equals(allergy))
+                                {
+                                    <span>@allergy.Name, </span>
+                                }
+                                else
+                                {
+                                    <span>@allergy.Name</span>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="position: absolute;right: 150px;top: 200px;margin-right: -60px;">
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+                <div class="col-sm-1" style="background-color:#71c269;color:#fff;width: 35px;padding: 0px;height: 10px;top: 5px;"></div>
+                <div class="col-sm-1">Execute</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+                <div class="col-sm-1" style="background-color:#80ced6;color:#fff;width: 35px;padding: 0px;height: 10px;top: 5px;"></div>
+                <div class="col-sm-1">Verify</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+                <div class="col-sm-1" style="background-color:#ffcc5c;color:#fff;width: 35px;padding: 0px;height: 10px;top: 5px;"></div>
+                <div class="col-sm-1">Discontinue</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+                <div class="col-sm-1" style="background-color:#f4a688;color:#fff;width: 35px;padding: 0px;height: 10px;top: 5px;"></div>
+                <div class="col-sm-1">Cancel</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section id="conference-timeline">
+    <div class="timeline-start">Start</div>
+    <div class="conference-center-line"></div>
+
+    <div class="conference-timeline-content">
+
+        @foreach (var drugDate in items)
+            {
+                time = string.Empty;
+
+            <div class="timeline-start sticky">@drugDate.StartDate</div>
+
+            foreach (var drugTime in drugDate.DrugTime)
+            {
+                // verify[0], Cancel[1], Discontinue[2], Execute[3]
+                List<String> lsOneDayStatus = new List<string>();
+                List<String> lsContinueStatus = new List<string>();
+
+                var drugOneDayCount = (drugTime.OneDay.lsVerify.Count > 0 ? 1 : 0)
+                                    + (drugTime.OneDay.lsCancel.Count > 0 ? 1 : 0)
+                                    + (drugTime.OneDay.lsDiscontinue.Count > 0 ? 1 : 0)
+                                    + (drugTime.OneDay.lsExecute.Count > 0 ? 1 : 0);
+                var drugContinue = (drugTime.Continue.lsVerify.Count > 0 ? 1 : 0)
+                                    + (drugTime.Continue.lsCancel.Count > 0 ? 1 : 0)
+                                    + (drugTime.Continue.lsDiscontinue.Count > 0 ? 1 : 0)
+                                    + (drugTime.Continue.lsExecute.Count > 0 ? 1 : 0);
+
+                var maxCountItem = (drugOneDayCount > drugContinue) ? drugOneDayCount : drugContinue;
+
+                if (drugTime.OneDay.lsVerify.Count > 0) { lsOneDayStatus.Add("Verify"); }
+                if (drugTime.OneDay.lsCancel.Count > 0) { lsOneDayStatus.Add("Cancel"); }
+                if (drugTime.OneDay.lsDiscontinue.Count > 0) { lsOneDayStatus.Add("Discontinue"); }
+                if (drugTime.OneDay.lsExecute.Count > 0) { lsOneDayStatus.Add("Execute"); }
+
+                if (drugTime.Continue.lsVerify.Count > 0) { lsContinueStatus.Add("Verify"); }
+                if (drugTime.Continue.lsCancel.Count > 0) { lsContinueStatus.Add("Cancel"); }
+                if (drugTime.Continue.lsDiscontinue.Count > 0) { lsContinueStatus.Add("Discontinue"); }
+                if (drugTime.Continue.lsExecute.Count > 0) { lsContinueStatus.Add("Execute"); }
+
+                var arOneDayStatus = lsOneDayStatus.ToArray();
+                var arContinueStatus = lsContinueStatus.ToArray();
+
+                <div class="timeline-article">
+
+
+
+                    @for (int countItem = 0; countItem < maxCountItem; countItem++)
+                    {
+                        if (arOneDayStatus.Length > countItem)
+                        {
+                            if (arOneDayStatus[countItem] == "Verify")
+                            {
+                                <div class="content-left-container">
+                                    <div class="content-left colorVerify">
+                                        <table class="table">
+                                            <tr style="background-color:#80ced6;">
+                                                <!-- Header -->
+                                                <th colspan="4"></th>
+                                            </tr>
+                                            @foreach (var status in drugTime.OneDay.lsVerify)
+                                            {
+                                                string tempHead = "";
+                                                int countOrder = 1;
+                                                <tr>
+                                                    <!-- Detail -->
+                                                    <td style="width:40%">
+                                                        @status.Service
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        @status.Qty
+                                                    </td>
+                                                    <td style="width:25%">
+                                                        @status.Dose
+                                                    </td>
+                                                    @if (status.AddUserCode.Substring(1, 3) != "119")
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName (<span style="color:blue">@status.AuthorisingClinician</span>)
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="TDTableOrderList" style="padding-top:0px;padding-left: 25px;border-top: 0px;">
+                                                            <table>
+                                                                @foreach (var question in status.QuestionAnswerModel)
+                                                                {
+                                                                    var styleText = (countOrder % 2 == 0) ? "background-color:#f5f5f5" : "";
+
+                                                                    <tr style='@styleText'>
+                                                                        @if (tempHead != @question.Head)
+                                                                        {
+                                                                            tempHead = @question.Head;
+                                                                            <td style="width:35%;color:blue;padding: 2px 5px;">
+                                                                                @question.Head
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>
+                                                                                &nbsp;
+                                                                            </td>
+                                                                        }
+
+                                                                        <td style="width:35%;padding: 2px 5px;">
+                                                                            @question.Title
+                                                                        </td>
+                                                                        <td style="width:30%;padding: 2px 5px;">
+                                                                            @question.Ans
+                                                                        </td>
+                                                                    </tr>
+                                                                    countOrder++;
+                                                                }
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                    <span class="timeline-author"></span>
+                                </div>
+                            }
+                            else if (arOneDayStatus[countItem] == "Cancel")
+                            {
+                                <div class="content-left-container">
+                                    <div class="content-left colorCancel">
+                                        <table class="table">
+                                            <tr style="background-color:#f4a688;">
+                                                <th colspan="4"></th>
+                                            </tr>
+                                            @foreach (var status in drugTime.OneDay.lsCancel)
+                                            {
+                                                string tempHead = "";
+                                                int countOrder = 0;
+                                                <tr>
+                                                    <!-- Detail -->
+                                                    <td style="width:40%">
+                                                        @status.Service
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        @status.Qty
+                                                    </td>
+                                                    <td style="width:25%">
+                                                        @status.Dose
+                                                    </td>
+                                                    @if (status.AddUserCode.Substring(1, 3) != "119")
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName (<span style="color:blue">@status.AuthorisingClinician</span>)
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="TDTableOrderList" style="padding-top:0px;padding-left: 25px;border-top: 0px;">
+                                                            <table>
+                                                                @foreach (var question in status.QuestionAnswerModel)
+                                                                {
+                                                                    var styleText = (countOrder % 2 == 0) ? "background-color:#f5f5f5" : "";
+
+                                                                    <tr style='@styleText'>
+                                                                        @if (tempHead != @question.Head)
+                                                                        {
+                                                                            tempHead = @question.Head;
+                                                                            <td style="width:35%;color:blue;padding: 2px 5px;">
+                                                                                @question.Head
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>
+                                                                                &nbsp;
+                                                                            </td>
+                                                                        }
+
+                                                                        <td style="width:35%;padding: 2px 5px;">
+                                                                            @question.Title
+                                                                        </td>
+                                                                        <td style="width:30%;padding: 2px 5px;">
+                                                                            @question.Ans
+                                                                        </td>
+                                                                    </tr>
+                                                                    countOrder++;
+                                                                }
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                    <span class="timeline-author"></span>
+                                </div>
+                            }
+                            else if (arOneDayStatus[countItem] == "Discontinue")
+                            {
+                                <div class="content-left-container">
+                                    <div class="content-left colorDiscontinue">
+                                        <table class="table">
+                                            <tr style="background-color:#ffcc5c;">
+                                                <th colspan="4"></th>
+                                            </tr>
+                                            @foreach (var status in drugTime.OneDay.lsDiscontinue)
+                                            {
+                                                string tempHead = "";
+                                                int countOrder = 1;
+                                                <tr>
+                                                    <!-- Detail -->
+                                                    <td style="width:40%">
+                                                        @status.Service
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        @status.Qty
+                                                    </td>
+                                                    <td style="width:25%">
+                                                        @status.Dose
+                                                    </td>
+                                                    @if (status.AddUserCode.Substring(1, 3) != "119")
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.DCUserName (<span style="color:blue">@status.AuthorisingClinician</span>)
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.DCUserName
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="TDTableOrderList" style="padding-top:0px;padding-left: 25px;border-top: 0px;">
+                                                            <table>
+                                                                @foreach (var question in status.QuestionAnswerModel)
+                                                                {
+                                                                    var styleText = (countOrder % 2 == 0) ? "background-color:#f5f5f5" : "";
+
+                                                                    <tr style='@styleText'>
+                                                                        @if (tempHead != @question.Head)
+                                                                        {
+                                                                            tempHead = @question.Head;
+                                                                            <td style="width:35%;color:blue;padding: 2px 5px;">
+                                                                                @question.Head
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>
+                                                                                &nbsp;
+                                                                            </td>
+                                                                        }
+
+                                                                        <td style="width:35%;padding: 2px 5px;">
+                                                                            @question.Title
+                                                                        </td>
+                                                                        <td style="width:30%;padding: 2px 5px;">
+                                                                            @question.Ans
+                                                                        </td>
+                                                                    </tr>
+                                                                    countOrder++;
+                                                                }
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                    <span class="timeline-author"></span>
+                                </div>
+                            }
+                            else if (arOneDayStatus[countItem] == "Execute")
+                            {
+                                <div class="content-left-container">
+                                    <div class="content-left colorExecute">
+                                        <table class="table">
+                                            <tr style="background-color:#71c269;">
+                                                <th colspan="4"></th>
+                                            </tr>
+                                            @foreach (var status in drugTime.OneDay.lsExecute)
+                                            {
+                                                string tempHead = "";
+                                                int countOrder = 1;
+                                                <tr>
+                                                    <!-- Detail -->
+                                                    <td style="width:40%">
+                                                        @status.Service
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        @status.Qty
+                                                    </td>
+                                                    <td style="width:25%">
+                                                        @status.Dose
+                                                    </td>
+                                                    @if (status.AddUserCode.Substring(1, 3) != "119")
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName (<span style="color:blue">@status.AuthorisingClinician</span>)
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="TDTableOrderList" style="padding-top:0px;padding-left: 25px;border-top: 0px;">
+                                                            <table>
+                                                                @foreach (var question in status.QuestionAnswerModel)
+                                                                {
+                                                                    var styleText = (countOrder % 2 == 0) ? "background-color:#f5f5f5" : "";
+
+                                                                    <tr style='@styleText'>
+                                                                        @if (tempHead != @question.Head)
+                                                                        {
+                                                                            tempHead = @question.Head;
+                                                                            <td style="width:35%;color:blue;padding: 2px 5px;">
+                                                                                @question.Head
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>
+                                                                                &nbsp;
+                                                                            </td>
+                                                                        }
+
+                                                                        <td style="width:35%;padding: 2px 5px;">
+                                                                            @question.Title
+                                                                        </td>
+                                                                        <td style="width:30%;padding: 2px 5px;">
+                                                                            @question.Ans
+                                                                        </td>
+                                                                    </tr>
+                                                                    countOrder++;
+                                                                }
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                    <span class="timeline-author"></span>
+                                </div>
+                            }
+                        }
+
+                        if (arContinueStatus.Length > countItem)
+                        {
+                            if (arContinueStatus[countItem] == "Verify")
+                            {
+                                <div class="content-right-container">
+                                    <div class="content-right colorVerify">
+                                        <table class="table">
+                                            <tr style="background-color:#80ced6;">
+                                                <th colspan="4"></th>
+                                            </tr>
+                                            @foreach (var status in drugTime.Continue.lsVerify)
+                                            {
+                                                string tempHead = "";
+                                                int countOrder = 1;
+                                                <tr>
+                                                    <!-- Detail -->
+                                                    <td style="width:40%">
+                                                        @status.Service
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        @status.Qty
+                                                    </td>
+                                                    <td style="width:25%">
+                                                        @status.Dose
+                                                    </td>
+                                                    @if (status.AddUserCode.Substring(1, 3) != "119")
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName (<span style="color:blue">@status.AuthorisingClinician</span>)
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="TDTableOrderList" style="padding-top:0px;padding-left: 25px;border-top: 0px;">
+                                                            <table>
+                                                                @foreach (var question in status.QuestionAnswerModel)
+                                                                {
+                                                                    var styleText = (countOrder % 2 == 0) ? "background-color:#f5f5f5" : "";
+
+                                                                    <tr style='@styleText'>
+                                                                        @if (tempHead != @question.Head)
+                                                                        {
+                                                                            tempHead = @question.Head;
+                                                                            <td style="width:35%;color:blue;padding: 2px 5px;">
+                                                                                @question.Head
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>
+                                                                                &nbsp;
+                                                                            </td>
+                                                                        }
+
+                                                                        <td style="width:35%;padding: 2px 5px;">
+                                                                            @question.Title
+                                                                        </td>
+                                                                        <td style="width:30%;padding: 2px 5px;">
+                                                                            @question.Ans
+                                                                        </td>
+                                                                    </tr>
+                                                                    countOrder++;
+                                                                }
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                    <span class="timeline-author"></span>
+                                </div>
+                            }
+                            else if (arContinueStatus[countItem] == "Cancel")
+                            {
+                                <div class="content-right-container">
+                                    <div class="content-right colorCancel">
+                                        <table class="table">
+                                            <tr style="background-color:#f4a688;">
+                                                <th colspan="4"></th>
+                                            </tr>
+                                            @foreach (var status in drugTime.Continue.lsCancel)
+                                            {
+                                                string tempHead = "";
+                                                int countOrder = 1;
+                                                <tr>
+                                                    <!-- Detail -->
+                                                    <td style="width:40%">
+                                                        @status.Service
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        @status.Qty
+                                                    </td>
+                                                    <td style="width:25%">
+                                                        @status.Dose
+                                                    </td>
+                                                    @if (status.AddUserCode.Substring(1, 3) != "119")
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName (<span style="color:blue">@status.AuthorisingClinician</span>)
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="TDTableOrderList" style="padding-top:0px;padding-left: 25px;border-top: 0px;">
+                                                            <table>
+                                                                @foreach (var question in status.QuestionAnswerModel)
+                                                                {
+                                                                    var styleText = (countOrder % 2 == 0)? "background-color:#f5f5f5" : "";
+
+                                                                    <tr style='@styleText'>
+                                                                        @if (tempHead != @question.Head)
+                                                                        {
+                                                                            tempHead = @question.Head;
+                                                                            <td style="width:35%;color:blue;padding: 2px 5px;">
+                                                                                @question.Head
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>
+                                                                                &nbsp;
+                                                                            </td>
+                                                                        }
+
+                                                                        <td style="width:35%;padding: 2px 5px;">
+                                                                            @question.Title
+                                                                        </td>
+                                                                        <td style="width:30%;padding: 2px 5px;">
+                                                                            @Html.Raw(@question.Ans)
+                                                                        </td>
+                                                                    </tr>
+                                                                    countOrder++;
+                                                                }
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                    <span class="timeline-author"></span>
+                                </div>
+                            }
+                            else if (arContinueStatus[countItem] == "Discontinue")
+                            {
+                                <div class="content-right-container">
+                                    <div class="content-right colorDiscontinue">
+                                        <table class="table">
+                                            <tr style="background-color:#ffcc5c;">
+                                                <th colspan="4"></th>
+                                            </tr>
+                                            @foreach (var status in drugTime.Continue.lsDiscontinue)
+                                            {
+                                                string tempHead = "";
+                                                int countOrder = 1;
+                                                <tr>
+                                                    <!-- Detail -->
+                                                    <td style="width:40%">
+                                                        @status.Service
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        @status.Qty
+                                                    </td>
+                                                    <td style="width:25%">
+                                                        @status.Dose
+                                                    </td>
+                                                    @if (status.AddUserCode.Substring(1, 3) != "119")
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.DCUserName (<span style="color:blue">@status.AuthorisingClinician</span>)
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.DCUserName
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="TDTableOrderList" style="padding-top:0px;padding-left: 25px;border-top: 0px;">
+                                                            <table>
+                                                                @foreach (var question in status.QuestionAnswerModel)
+                                                                {
+                                                                    var styleText = (countOrder % 2 == 0) ? "background-color:#f5f5f5" : "";
+
+                                                                    <tr style='@styleText'>
+                                                                        @if (tempHead != @question.Head)
+                                                                        {
+                                                                            tempHead = @question.Head;
+                                                                            <td style="width:35%;color:blue;padding: 2px 5px;">
+                                                                                @question.Head
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>
+                                                                                &nbsp;
+                                                                            </td>
+                                                                        }
+
+                                                                        <td style="width:35%;padding: 2px 5px;">
+                                                                            @question.Title
+                                                                        </td>
+                                                                        <td style="width:30%;padding: 2px 5px;">
+                                                                            @Html.Raw(@question.Ans)
+                                                                        </td>
+                                                                    </tr>
+                                                                    countOrder++;
+                                                                }
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                    <span class="timeline-author"></span>
+                                </div>
+                            }
+                            else if (arContinueStatus[countItem] == "Execute")
+                            {
+                                <div class="content-right-container">
+                                    <div class="content-right colorExecute">
+                                        <table class="table">
+                                            <tr style="background-color:#71c269;">
+                                                <th colspan="4"></th>
+                                            </tr>
+                                            @foreach (var status in drugTime.Continue.lsExecute)
+                                            {
+                                                string tempHead = "";
+                                                int countOrder = 1;
+                                                <tr>
+                                                    <!-- Detail -->
+                                                    <td style="width:40%">
+                                                        @status.Service
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        @status.Qty
+                                                    </td>
+                                                    <td style="width:25%">
+                                                        @status.Dose
+                                                    </td>
+                                                    @if (status.AddUserCode.Substring(1, 3) != "119")
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName (<span style="color:blue">@status.AuthorisingClinician</span>)
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="width:25%">
+                                                            @status.AddUserName
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="4" class="TDTableOrderList" style="padding-top:0px;padding-left: 25px;border-top: 0px;">
+                                                            <table>
+                                                                @foreach (var question in status.QuestionAnswerModel)
+                                                                {
+                                                                    var styleText = (countOrder % 2 == 0) ? "background-color:#f5f5f5" : "";
+
+                                                                    <tr style='@styleText'>
+                                                                        @if (tempHead != @question.Head)
+                                                                        {
+                                                                            tempHead = @question.Head;
+                                                                            <td style="width:35%;color:blue;padding: 2px 5px;">
+                                                                                @question.Head
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>
+                                                                                &nbsp;
+                                                                            </td>
+                                                                        }
+
+                                                                        <td style="width:35%;padding: 2px 5px;">
+                                                                            @question.Title
+                                                                        </td>
+                                                                        <td style="width:30%;padding: 2px 5px;">
+                                                                            @question.Ans
+                                                                        </td>
+                                                                    </tr>
+                                                                    countOrder++;
+                                                                }
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                            }
+
+                                        </table>
+                                    </div>
+                                    <span class="timeline-author"></span>
+                                </div>
+                            }
+                        }
+
+                    }
+
+                    @if (time != drugTime.StartTime)
+                    {
+                        time = drugTime.StartTime;
+                        <div class="meta-date">
+                            <span class="date">@drugTime.StartTime</span>
+                        </div>
+                    }
+
+                </div>
+            }
+        }
+
+    </div>
+    <div class="timeline-end">End</div>
+</section>

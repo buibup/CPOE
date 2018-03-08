@@ -1,0 +1,570 @@
+﻿{
+  "Patient": {
+    "HN": "11-17-021815",
+    "Name": "MR.FUMIO NIWA",
+    "Gender": "ชาย (Male)",
+    "DOB": "15/08/1941",
+    "EpisodeNo": "I11-17-004881",
+    "Age": "75"
+  },
+  "OneDay": [
+    {
+      "OEORI_RowId": "17089598||251",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEXI0040O",
+      "Service": "Nexium MUPS TABLET@ (40 mg)",
+      "QuestionAnswer": [
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "Once every 4h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "other",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "End date",
+          "QA_Answer": "20/05/2017"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "Once every 2h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "Other",
+          "QA_Answer": "Neu Other"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "End date",
+          "QA_Answer": "21/05/2017"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "Once every 8h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "Other",
+          "QA_Answer": "Input Other"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "End Date",
+          "QA_Answer": "22/05/2017"
+        }
+      ],
+      "Qty": "1",
+      "Dose": "Once Daily Before Breakfast",
+      "StartDate": "23/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "DoctorA",
+      "AddUserName": "DoctorA",
+      "OSTAT_Code": "V",
+      "OSTAT_Desc": "Verify"
+    },
+    {
+      "OEORI_RowId": "17089598||252",
+      "OEORI_Date": "24/04/2017",
+      "ARCIM_Code": "MTBNEXI0040O",
+      "Service": "Nexium MUPS TABLET@ (40 mg)  ",
+      "QuestionAnswer": [
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "Once every 4h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "other",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "End date",
+          "QA_Answer": "20/05/2017"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "Once every 2h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "Other",
+          "QA_Answer": "Neu Other"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "End date",
+          "QA_Answer": "21/05/2017"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "Once every 8h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "Other",
+          "QA_Answer": "Input Other"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "End Date",
+          "QA_Answer": "22/05/2017"
+        }
+      ],
+      "Qty": "1",
+      "Dose": "Once Daily Before Breakfast",
+      "StartDate": "24/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "DoctorB",
+      "AddUserName": "DoctorB",
+      "OSTAT_Code": "V",
+      "OSTAT_Desc": "Verify"
+    }
+  ],
+  "Continue": [
+    {
+      "OEORI_RowId": "17089598||253",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEXI0040O",
+      "Service": "Nexium MUPS TABLET@ (40 mg)  ",
+      "QuestionAnswer": [
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "Once every 4h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "other",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "End date",
+          "QA_Answer": "20/05/2017"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "Once every 2h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "Other",
+          "QA_Answer": "Neu Other"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "End date",
+          "QA_Answer": "21/05/2017"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "Once every 8h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "Other",
+          "QA_Answer": "Input Other"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "End Date",
+          "QA_Answer": "22/05/2017"
+        }
+      ],
+      "Qty": "1",
+      "Dose": "Once Daily Before Breakfast",
+      "StartDate": "23/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "DoctorC",
+      "AddUserName": "DoctorC",
+      "OSTAT_Code": "V",
+      "OSTAT_Desc": "Verify"
+    },
+    {
+      "OEORI_RowId": "17089598||25",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEXI0040O",
+      "Service": "Nexium MUPS TABLET@ (40 mg)  ",
+      "QuestionAnswer": [
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "Once every 4h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "other",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Vital Sign",
+          "QUES_Desc": "End date",
+          "QA_Answer": "20/05/2017"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "Once every 2h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "Other",
+          "QA_Answer": "Neu Other"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Neurosign (GCS Score)",
+          "QUES_Desc": "End date",
+          "QA_Answer": "21/05/2017"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "Once every 8h",
+          "QA_Answer": ""
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "Other",
+          "QA_Answer": "Input Other"
+        },
+        {
+          "OrdItemType": "Record",
+          "QUES": "Input/output",
+          "QUES_Desc": "End Date",
+          "QA_Answer": "22/05/2017"
+        }
+      ],
+      "Qty": "1",
+      "Dose": "Once Daily Before Breakfast",
+      "StartDate": "26/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "011000124",
+      "DCUserName": "บูรพา       คำศิลา",
+      "DCDate": "26/04/2017",
+      "DCTime": "21:11",
+      "AddUserCode": "",
+      "AddUserName": "",
+      "OSTAT_Code": "D",
+      "OSTAT_Desc": "D/C (Discontinued)"
+    },
+    {
+      "OEORI_RowId": "16976440||140",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBCALP0000O",
+      "Service": "CalTRATE Plus TABLET  #>L<(I)",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily After Breakfast",
+      "StartDate": "23/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "DoctorD",
+      "AddUserName": "DoctorD",
+      "OSTAT_Code": "V",
+      "OSTAT_Desc": "Verify"
+    },
+    {
+      "OEORI_RowId": "16976440||142",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBCALP0000O",
+      "Service": "CalTRATE Plus TABLET  #>L<(I)",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily After Breakfast",
+      "StartDate": "29/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "011000124",
+      "DCUserName": "บูรพา       คำศิลา",
+      "DCDate": "29/04/2017",
+      "DCTime": "21:11",
+      "AddUserCode": "",
+      "AddUserName": "",
+      "OSTAT_Code": "D",
+      "OSTAT_Desc": "D/C (Discontinued)"
+    },
+    {
+      "OEORI_RowId": "16976440||1431",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEUR0300O",
+      "Service": "NeuroNTIN CAPSULE  (300 mg)  F   >L<",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily Before Bedtime",
+      "StartDate": "23/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "DoctorE",
+      "AddUserName": "DoctorE",
+      "OSTAT_Code": "V",
+      "OSTAT_Desc": "Verify"
+    },
+    {
+      "OEORI_RowId": "16976440||143",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEUR0300O",
+      "Service": "NeuroNTIN CAPSULE  (300 mg)  F   >L<",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily Before Bedtime",
+      "StartDate": "25/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "011000133",
+      "DCUserName": "นฤมล     มหาโยธี",
+      "DCDate": "25/04/2017",
+      "DCTime": "10:29",
+      "AddUserCode": "",
+      "AddUserName": "",
+      "OSTAT_Code": "D",
+      "OSTAT_Desc": "D/C (Discontinued)"
+    },
+    {
+      "OEORI_RowId": "16976440||527",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEUR0300O",
+      "Service": "NeuroNTIN CAPSULE  (300 mg)  F   >L<",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily Before Bedtime",
+      "StartDate": "23/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "DOCTORF",
+      "AddUserName": "DOCTORF",
+      "OSTAT_Code": "V",
+      "OSTAT_Desc": "Verify"
+    },
+    {
+      "OEORI_RowId": "16976440||527",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEUR0300O",
+      "Service": "NeuroNTIN CAPSULE  (300 mg)  F   >L<",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily Before Bedtime",
+      "StartDate": "26/04/2017",
+      "StartTime": "03:33",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "011000107",
+      "DCUserName": "กัญญา    ตั้งศรีสงวน",
+      "DCDate": "26/04/2017",
+      "DCTime": "09:37",
+      "AddUserCode": "",
+      "AddUserName": "",
+      "OSTAT_Code": "D",
+      "OSTAT_Desc": "D/C (Discontinued)"
+    },
+    {
+      "OEORI_RowId": "16976440||528",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBCALP0000O",
+      "Service": "CalTRATE Plus TABLET  #>L<(I)",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily After Breakfast",
+      "StartDate": "23/04/2017",
+      "StartTime": "10:01",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "Doctor1",
+      "AddUserName": "Doctor1",
+      "OSTAT_Code": "V",
+      "OSTAT_Desc": "Verify"
+    },
+    {
+      "OEORI_RowId": "16976440||528",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBCALP0000O",
+      "Service": "CalTRATE Plus TABLET  #>L<(I)",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily After Breakfast",
+      "StartDate": "26/04/2017",
+      "StartTime": "10:01",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "011000107",
+      "DCUserName": "กัญญา    ตั้งศรีสงวน",
+      "DCDate": "26/04/2017",
+      "DCTime": "09:37",
+      "AddUserCode": "demo",
+      "AddUserName": "Demo User",
+      "OSTAT_Code": "D",
+      "OSTAT_Desc": "D/C (Discontinued)"
+    },
+    {
+      "OEORI_RowId": "16976440||5291",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEUR0000O",
+      "Service": "NeuroBION TABLET  >L<",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily",
+      "StartDate": "26/04/2017",
+      "StartTime": "10:01",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "doctor2",
+      "AddUserName": "doctor2",
+      "OSTAT_Code": "",
+      "OSTAT_Desc": ""
+    },
+    {
+      "OEORI_RowId": "16976440||529",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEUR0000O",
+      "Service": "NeuroBION TABLET  >L<",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily",
+      "StartDate": "26/04/2017",
+      "StartTime": "10:01",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "011000107",
+      "DCUserName": "กัญญา    ตั้งศรีสงวน",
+      "DCDate": "26/04/2017",
+      "DCTime": "09:37",
+      "AddUserCode": "demo",
+      "AddUserName": "Demo User",
+      "OSTAT_Code": "D",
+      "OSTAT_Desc": "D/C (Discontinued)"
+    },
+    {
+      "OEORI_RowId": "16976440||5301",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEXI0040O",
+      "Service": "Nexium MUPS TABLET@ (40 mg)  ",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily Before Breakfast",
+      "StartDate": "23/04/2017",
+      "StartTime": "10:01",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "",
+      "DCUserName": "",
+      "DCDate": "",
+      "DCTime": "",
+      "AddUserCode": "doctor3",
+      "AddUserName": "doctor3",
+      "OSTAT_Code": "V",
+      "OSTAT_Desc": "Verify"
+    },
+    {
+      "OEORI_RowId": "16976440||530",
+      "OEORI_Date": "23/04/2017",
+      "ARCIM_Code": "MTBNEXI0040O",
+      "Service": "Nexium MUPS TABLET@ (40 mg)  ",
+      "QuestionAnswer": [],
+      "Qty": "1",
+      "Dose": "Once Daily Before Breakfast",
+      "StartDate": "26/04/2017",
+      "StartTime": "10:01",
+      "OrderingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "AuthorisingClinician": "จตุพล  คงถาวรสกุล,ดร.นพ.",
+      "DCUserCode": "011000107",
+      "DCUserName": "กัญญา    ตั้งศรีสงวน",
+      "DCDate": "26/04/2017",
+      "DCTime": "09:37",
+      "AddUserCode": "demo",
+      "AddUserName": "Demo User",
+      "OSTAT_Code": "D",
+      "OSTAT_Desc": "D/C (Discontinued)"
+    }
+  ]
+}
